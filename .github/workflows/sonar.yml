@@ -25,8 +25,8 @@ jobs:
         run: |
           mvn clean verify sonar:sonar \
           -Dsonar.projectKey=master-devops-cloud2_HAFIANI_Salma_Gates \
-          -Dsonar.organization=master-devops-cloud2 \
           -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.organization=master-devops-cloud2 \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
       - name: Upload Quality Gate Status (Optional)  
