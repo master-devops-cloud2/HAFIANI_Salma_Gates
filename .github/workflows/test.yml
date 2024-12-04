@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17' # Changez la version selon votre projet
+          java-version: '17' 
 
       # Étape 3 : Mettre en cache le dossier Maven
       - name: Cache Maven packages
@@ -44,7 +44,7 @@ jobs:
       # Étape 6 : Télécharger les résultats des tests
       - name: Upload Test Results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 # Mise à jour vers v4
         with:
           name: test-results
-          path: target/surefire-reports/ # Assurez-vous que cette path correspond à l'emplacement de vos rapports de test
+          path: target/surefire-reports/ 
