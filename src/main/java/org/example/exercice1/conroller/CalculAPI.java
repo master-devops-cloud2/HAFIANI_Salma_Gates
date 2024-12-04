@@ -2,7 +2,6 @@ package org.example.exercice1.conroller;
 
 import org.example.exercice1.entities.Nombres;
 import org.example.exercice1.service.ServiceCalcul;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,13 +16,17 @@ import java.util.Map;
 
 public class CalculAPI {
 
-    @Autowired
-    ServiceCalcul servicecalcul;
+    private final ServiceCalcul serviceCalcul;
+
+    // Injection par constructeur
+    public CalculAPI(ServiceCalcul serviceCalcul) {
+        this.serviceCalcul = serviceCalcul;
+    }
 
     @GetMapping
     public ResponseEntity<Map<String, Double>> calculsomme (@RequestParam double a, double b){
         Nombres nombres = new Nombres(a,b);
-        double somme = servicecalcul.SommeOperation(nombres);
+        double somme = serviceCalcul.SommeOperation(nombres);
         Map<String,Double> responsejson = new HashMap<>();
         responsejson.put("somme", somme);
 
